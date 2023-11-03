@@ -13,6 +13,21 @@ const styles = StyleSheet.create({
         height:50,
         borderRadius:25,
         marginRight:10
+    },
+    searchBox:{
+        borderWidth:1,
+        flexDirection:'row',
+        width:334,
+        height:44,
+        borderRadius:4,
+        marginHorizontal:30,
+        alignItems:'center',
+        marginVertical:10
+    },
+    searchImg:{
+        width:26,
+        height:26,
+        marginHorizontal:20
     }
 })
 export default styles;

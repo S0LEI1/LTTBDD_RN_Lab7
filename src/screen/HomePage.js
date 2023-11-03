@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TextInput, FlatList } from "react-native";
 import React, { useEffect, useState } from "react";
 import { ArrowLeft } from "iconsax-react-native";
 import styles from "../style/HomePage_style";
@@ -22,25 +22,38 @@ const HomePage = ({ route }) => {
         <ArrowLeft color="black" />
         <View>
           {data.map((item) => {
-            if (item.name == name) {
-              return (
-                <View key={item.id} style={{ flexDirection: "row" }}>
-                  <Image
-                    key={item.id}
-                    source={item.avatar}
-                    style={styles.img}
-                  />
-                  <View>
-                    <Text>Hello {item.name}</Text>
-                    <Text>Have agrate day a head</Text>
-                  </View>
+            return (
+              <View key={item.id} style={{ flexDirection: "row" }}>
+                <Image source={item.avatar} style={styles.img} />
+                <View>
+                  <Text>Hello {item.name}</Text>
+                  <Text>Have agrate day a head</Text>
+                  
                 </View>
-              );
-            }
+              </View>
+            );
           })}
         </View>
       </View>
-      
+      <View style={styles.searchBox}>
+        <Image
+          style={styles.searchImg}
+          source={require("../../assets/search.png")}
+          resizeMode="stretch"
+        />
+        <TextInput placeholder="Search" />
+      </View>
+      <View>
+        {
+          data.map((item)=>{
+            item.map((i)=>(
+              <View>
+                <Text>{i.name}</Text>
+              </View>
+            ))
+          })
+        }
+      </View>
     </View>
   );
 };
