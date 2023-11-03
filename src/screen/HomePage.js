@@ -1,9 +1,11 @@
 import { View, Text, Image } from "react-native";
 import React, { useEffect, useState } from "react";
 import { ArrowLeft } from "iconsax-react-native";
+import styles from "../style/HomePage_style";
 
-const HomePage = () => {
-    const item = undefined;
+const HomePage = ({ route }) => {
+  const { name } = route.params;
+  console.log("name:", name);
   var [data, setData] = useState([]);
   useEffect(() => {
     fetch("https://6544af2b5a0b4b04436cbd01.mockapi.io/user")
@@ -11,30 +13,34 @@ const HomePage = () => {
       .then((json) => {
         console.log(json);
         setData(json);
-        item = json[0];
       });
   }, []);
   console.log("data", data);
-        console.log("item", item);
   return (
-    
     <View>
-      <View>
-        
+      <View style={styles.header}>
         <ArrowLeft color="black" />
         <View>
-            {/* <Image source={item.avatar} style={{width:100, height:100}}/> */}
+          {data.map((item) => {
+            if (item.name == name) {
+              return (
+                <View key={item.id} style={{ flexDirection: "row" }}>
+                  <Image
+                    key={item.id}
+                    source={item.avatar}
+                    style={styles.img}
+                  />
+                  <View>
+                    <Text>Hello {item.name}</Text>
+                    <Text>Have agrate day a head</Text>
+                  </View>
+                </View>
+              );
+            }
+          })}
         </View>
       </View>
-      <View>
-        {
-            data.map((item) =>(
-                <View key={item.id}>
-                    <Image source={item.avatar} style={{width:100, height:100}} resizeMode="stretch" />
-                </View>
-            ))
-        }
-      </View>
+      
     </View>
   );
 };
