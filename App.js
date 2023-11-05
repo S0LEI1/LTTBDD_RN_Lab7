@@ -4,7 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import LandingPage from './src/screen/LandingPage';
 import HomePage from './src/screen/HomePage';
-import DetailPage from './src/screen/DetailPage';
+import AddJob from './src/screen/AddJob';
 const Stack = createNativeStackNavigator()
 export default function App() {
   return (
@@ -12,7 +12,7 @@ export default function App() {
       <Stack.Navigator initialRouteName='Landing' screenOptions={{headerShown:false}}>
         <Stack.Screen name='Landing' component={LandingPage} />
         <Stack.Screen name='Home' component={HomePage} />
-        <Stack.Screen name='Detail' component={DetailPage} />
+        <Stack.Screen name='AddJob' component={AddJob} />
       </Stack.Navigator>
     </NavigationContainer>
   );

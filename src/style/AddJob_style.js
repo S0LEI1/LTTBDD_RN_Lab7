@@ -3,7 +3,11 @@ import { Dimensions, StyleSheet } from "react-native";
 const screenWidth = Dimensions.get('screen').width;
 const screenHeight = Dimensions.get('screen').height;
 const styles = StyleSheet.create({
-    header:{
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+      },
+      header:{
         flexDirection: "row", 
         justifyContent:'space-between',
         margin:20
@@ -14,31 +18,17 @@ const styles = StyleSheet.create({
         borderRadius:25,
         marginRight:10
     },
-    searchBox:{
-        borderWidth:1,
-        flexDirection:'row',
-        width:334,
-        height:44,
-        borderRadius:4,
-        marginHorizontal:30,
-        alignItems:'center',
-        marginVertical:10
-    },
-    searchImg:{
-        width:26,
-        height:26,
-        marginHorizontal:20
-    },
     jobBox:{
         width:335,
         height:48,
-        backgroundColor:'#D3D5D8',
-        borderRadius:24,
+        borderRadius:5,
         marginHorizontal:20,
         flexDirection:'row',
         alignItems:'center',
-        marginVertical:10,
+        marginVertical:50,
         paddingLeft:20,
+        borderWidth:1,
+        borderColor:'#9095A0'
     },
     jobIcon:{
         width:24,
@@ -46,13 +36,13 @@ const styles = StyleSheet.create({
 
     },
     button:{
-        width:70,
-        height:70,
-        borderRadius:35,
-        backgroundColor:'#00BDD6',
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        flexDirection:'row',
+        width:190,
+        height:44,
+        backgroundColor:'#00BDD6',
+        borderRadius:15
     }
-
 })
 export default styles;
