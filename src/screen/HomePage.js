@@ -64,9 +64,23 @@ const HomePage = ({ navigation, route }) => {
       });
   };
 
-  console.log(name);
-  console.log("user:", user);
-  console.log("job:", job);
+  const handleRemove = (id) => {
+    fetch("https://6544af2b5a0b4b04436cbd01.mockapi.io/user/1/job/" + id, {
+      method: "DELETE",
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        // handle error
+      })
+      .then((task) => {
+        getJobs();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <View>
       <View style={styles.header}>
@@ -99,11 +113,17 @@ const HomePage = ({ navigation, route }) => {
         {job.map((item) => (
           <View key={item.id} style={styles.jobBox}>
             <View style={{ flexDirection: "row" }}>
-              <Image
-                style={styles.jobIcon}
-                source={require("../../assets/check.png")}
-                resizeMode="stretch"
-              />
+              <Pressable
+                onPress={() => {
+                  handleRemove(item.id);
+                }}
+              >
+                <Image
+                  style={styles.jobIcon}
+                  source={require("../../assets/check.png")}
+                  resizeMode="stretch"
+                />
+              </Pressable>
               <TextInput value={item.name} selectTextOnFocus={false} />
             </View>
             <Pressable style={{ right: 20, position: "absolute" }}>
