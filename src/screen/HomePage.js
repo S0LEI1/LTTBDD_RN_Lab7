@@ -20,7 +20,7 @@ const HomePage = ({ navigation, route }) => {
 
   useEffect(() => {
     getUser();
-  }, []);
+  }, [isFocused]);
   useEffect(() => {
     getJobs();
   }, [isFocused]);
@@ -35,7 +35,7 @@ const HomePage = ({ navigation, route }) => {
       .then((res) => {
         if (res.ok) {
           return res.json();
-        }
+        } 
         // handle error
       })
       .then((user) => {
@@ -126,7 +126,10 @@ const HomePage = ({ navigation, route }) => {
               </Pressable>
               <TextInput value={item.name} selectTextOnFocus={false} />
             </View>
-            <Pressable style={{ right: 20, position: "absolute" }}>
+            <Pressable onPress={()=>{
+              console.log(user);
+              navigation.navigate('UpdateJob', {item: item,user: user});
+            }} style={{ right: 20, position: "absolute" }}>
               <Image
                 style={[styles.jobIcon]}
                 source={require("../../assets/edit.png")}

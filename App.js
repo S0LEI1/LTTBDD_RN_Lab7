@@ -5,6 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import LandingPage from './src/screen/LandingPage';
 import HomePage from './src/screen/HomePage';
 import AddJob from './src/screen/AddJob';
+import UpdateJob from './src/screen/UpdateJob';
 const Stack = createNativeStackNavigator()
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         <Stack.Screen name='Landing' component={LandingPage} />
         <Stack.Screen name='Home' component={HomePage} />
         <Stack.Screen name='AddJob' component={AddJob} />
+        <Stack.Screen name='UpdateJob' component={UpdateJob} />
       </Stack.Navigator>
     </NavigationContainer>
   );

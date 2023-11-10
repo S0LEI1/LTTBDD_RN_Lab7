@@ -6,11 +6,8 @@ import { TextInput } from "react-native";
 import { Pressable } from "react-native";
 
 const AddJob = ({ navigation, route }) => {
-  const data = [route.params];
-  var [job, setJob] = useState("default");
-  console.log("ojb", data);
- 
-
+  const user = [route.params.user];
+  console.log("user", user);
 
     const handleSave =() =>{
       fetch("https://6544af2b5a0b4b04436cbd01.mockapi.io/user/1/job", {
@@ -43,7 +40,7 @@ const AddJob = ({ navigation, route }) => {
       {
         <View style={styles.header}>
           <View>
-            {data.map((item, index) => {
+            {user.map((item, index) => {
               return (
                 <View key={index} style={{ flexDirection: "row" }}>
                   <Image source={item.avatar} style={styles.img} />
